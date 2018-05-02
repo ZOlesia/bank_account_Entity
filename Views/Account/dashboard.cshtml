@@ -1,0 +1,37 @@
+@model bank_accounts.Models.Transaction 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Your Bank Account</a>
+            </div>
+            <span class="float-right">
+                <span class="navbar-brand">Welcome, @ViewBag.allAboutUser.Name</span>
+                <a class="navbar-brand" href="/login">log off</a>
+            </span>
+        </div>
+</nav>
+<h3>Current balance: $ @ViewBag.allAboutUser.balance</h3>
+<form asp-controller="Account" asp-action="Proccess" method="POST">
+    <br>
+    Deposit/Withdraw <input type="number" name="num">
+    <br>
+    <span class="text-danger">@TempData["error"]</span>
+    <br>
+    <button type="submit">Submit</button>
+    <br>
+</form>
+
+
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    @foreach(var a in @ViewBag.reverse_transactions)
+    {
+        <tr>
+            <td>$@a.amount</td>
+            <td>@a.trans_date.ToString("MMM dd, yyyy")</td>
+        </tr>
+    }
+</table>

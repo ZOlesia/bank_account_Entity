@@ -1,0 +1,21 @@
+﻿
+@model bank_accounts.Models.RegisterViewModel 
+<h1>LogIn Form</h1>
+<form action="/logIn" method="POST">
+    <br>
+    
+    <label asp-for="email"></label>
+    <input asp-for="email"/>
+    <br>
+    <span class="text-danger">@TempData["email_error"]</span>
+    <br>
+    <label asp-for="password"></label>
+    <input asp-for="password"/>
+    <br>
+    <span class="text-danger">@TempData["psw_error"]</span>
+    <br>
+    <input type="submit" value="Login">
+</form>
+
+
+<a href="/">Need To Register?</a>
